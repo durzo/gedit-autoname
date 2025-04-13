@@ -13,7 +13,9 @@ class AutonamePlugin(GObject.Object, Gedit.WindowActivatable):
 
     def __init__(self):
         GObject.Object.__init__(self)
-        self.desktop_path = os.path.expanduser("~/Desktop/")
+        self.desktop_path = os.path.expanduser("~/Documents/gedit/")
+        if not os.path.isdir(self.desktop_path):
+            os.mkdir(self.desktop_path)
         self.path_regex = re.compile("^" + self.desktop_path + r".* \d{14}\.txt$")
 
     def do_activate(self):
